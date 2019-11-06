@@ -1,0 +1,39 @@
+GHCi, version 8.4.3: http://www.haskell.org/ghc/  :? for help
+[1 of 6] Compiling Syntax           ( Syntax.hs, interpreted )
+[2 of 6] Compiling Eval             ( Eval.hs, interpreted )
+[3 of 6] Compiling Token            ( Token.hs, interpreted )
+[4 of 6] Compiling Parser           ( Parser.hs, interpreted )
+[5 of 6] Compiling Lexer            ( Lexer.hs, interpreted )
+[6 of 6] Compiling Main             ( PreL.hs, interpreted )
+Ok, six modules loaded.
+*Main> [VarT "iftruethen",LiteralT (IntegerV 3),ElseT,LiteralT (IntegerV 4)]
+*Main> [LambdaT,VarT "x",DotT,VarT "x"]
+*Main> [OpT Plus,LiteralT (IntegerV 1),LiteralT (IntegerV 5)]
+*Main> [IfT,LiteralT (BoolV True),ThenT,LiteralT (BoolV False),ElseT,LiteralT (BoolV True)]
+*Main> [OpT Plus,OpT Minus,LiteralT (IntegerV 3),LiteralT (IntegerV 4),LiteralT (IntegerV 5)]
+*Main> [LambdaT,VarT "x",DotT,OpT Plus,LiteralT (IntegerV 5),VarT "y"]
+*Main> *Main> (ValueE (IntegerV 5),[LiteralT (BoolV False)])
+*Main> (OpE Plus (ValueE (IntegerV 5)) (ValueE (IntegerV 6)),[])
+*Main> (IfE (ValueE (BoolV True)) (ValueE (BoolV False)) (ValueE (BoolV True)),[])
+*Main> (AppE (VarE "x") (VarE "y"),[])
+*Main> *** Exception: unimplemented
+CallStack (from HasCallStack):
+  error, called at ./Parser.hs:42:12 in main:Parser
+*Main> *Main> IntegerV 11
+*Main> IntegerV 10
+*Main> BoolV False
+*Main> IntegerV *** Exception: Not integer
+CallStack (from HasCallStack):
+  error, called at ./Eval.hs:28:14 in main:Eval
+*Main> BoolV *** Exception: Not boolean
+CallStack (from HasCallStack):
+  error, called at ./Eval.hs:33:15 in main:Eval
+*Main> IntegerV 10
+*Main> *Main> IfE (ValueE (BoolV True)) (ValueE (IntegerV 3)) (ValueE (IntegerV 4))
+*Main> IfE (OpE LessThan (OpE Minus (ValueE (IntegerV 5)) (ValueE (IntegerV 4))) (ValueE (IntegerV 2))) (OpE Minus (ValueE (IntegerV 3)) (ValueE (IntegerV 2))) (OpE Plus (ValueE (IntegerV 9)) (ValueE (IntegerV 10)))
+*Main> *Main> IntegerV 1
+*Main> IntegerV 3
+*Main> IntegerV 5
+*Main> BoolV True
+*Main> BoolV False
+*Main> Leaving GHCi.
